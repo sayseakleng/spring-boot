@@ -42,6 +42,10 @@ repositories {
     jcenter()
 }
 
+ext {
+	thymeleafVersion = '3.0.1.RELEASE'
+}
+
 // In this section you declare the dependencies for your production and test code
 dependencies {
     
@@ -51,15 +55,21 @@ dependencies {
     } */
     
     compile 'org.springframework.boot:spring-boot-starter-undertow'
+    // to support http2 
+    compile 'org.mortbay.jetty.alpn:alpn-boot:8.1.9.v20160720'
     
     compile('org.springframework.boot:spring-boot-starter-thymeleaf') {
     	exclude module: 'spring-boot-starter-tomcat'
     	exclude module: 'org.apache.tomcat.embed'
     }
+    
+    // upgrade thymeleaf
+    compile "org.thymeleaf:thymeleaf-spring4:${thymeleafVersion}"
+    compile "org.thymeleaf:thymeleaf:${thymeleafVersion}"
+    compile 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect:2.0.1'
+    
     optional 'org.springframework.boot:spring-boot-devtools'
     
-    compile 'org.mortbay.jetty.alpn:alpn-boot:8.1.9.v20160720'
- 
     testCompile('org.springframework.boot:spring-boot-starter-test')
 }
 
@@ -79,6 +89,7 @@ task copyFiles{
 	}
 }
 
+// use spring gradle to run project
 bootRun {
-   jvmArgs = [ "-Xbootclasspath/p:alpn-boot-8.1.9.v20160720.jar"]
+   jvmArgs = [ "-Xbootclasspath/p:src/main/resources/h2/alpn-boot-8.1.9.v20160720.jar"]
 }
