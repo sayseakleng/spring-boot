@@ -8,10 +8,10 @@
 		</layout>
 	</appender>
 
-	<logger name="com.kdemo" level="INFO" additivity="true"/>
+	<logger name="com.kdemo" level="INFO" additivity="true" />
 
 	<root level="INFO">
 		<appender-ref ref="STDOUT" />
 	</root>
-
+	
 </configuration>

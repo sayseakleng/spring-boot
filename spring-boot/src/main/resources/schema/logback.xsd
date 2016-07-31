@@ -20,7 +20,7 @@
 		<xsd:attribute name="debug" type="xsd:boolean" use="optional"/>
 		<xsd:attribute name="scan" type="xsd:string" use="optional"/>
 		<xsd:attribute name="scanPeriod" type="xsd:string" use="optional"/>
-		<xsd:anyAttribute/>
+		<xsd:anyAttribute />
 	</xsd:complexType>
 
 	<xsd:complexType name="StatusListener">
